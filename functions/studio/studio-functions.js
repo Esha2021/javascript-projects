@@ -19,6 +19,26 @@
 
 // Part Three: Complete Reversal
 
+let variableName = "hello";
+
+function reverseCharacters(i) {
+    if (typeof(i) == "string") {
+        let lettersArray = i.split('');
+        let reversedLettersArray = lettersArray.reverse();
+        return reversedLettersArray.join('');
+    }
+    else if (typeof(i) == "number") {
+        let numbersString = i.toString();
+        let numbersArray = numbersString.split('');
+        let reversedArray = numbersArray.reverse();
+        let numbersString2 = reversedArray.join('');
+        return Number(numbersString2);
+    }
+ }
+
+ console.log(reverseCharacters(variableName));
+ console.log(reverseCharacters('1234'));
+
 // 1. Define and initialize an empty array.
 // 2. Loop through the old array.
 // 3. For each element in the old array, call reverseCharacters to flip the characters or digits.
@@ -26,9 +46,23 @@
 // 5. Return the final, reversed array.
 // 6. Be sure to print the results from each test case in order to verify your code.
 
-let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
-let arrayTest2 = [123, 8897, 42, 1168, 8675309];
+// let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
+// let arrayTest2 = [123, 8897, 42, 1168, 8675309];
 let arrayTest3 = ['hello', 'world', 123, 'orange'];
+
+
+function completeReversal(n) {
+   let answer = [];
+
+   for (let x = n.length -1 ; x >= 0; x --) {
+       let switched = reverseCharacters(n[x]);
+       answer.push(switched);
+   }
+
+   return answer;
+}
+
+console.log(completeReversal(arrayTest3));
 
 // Bonus Missions
 
@@ -49,3 +83,26 @@ let arrayTest3 = ['hello', 'world', 123, 'orange'];
 // 3. Call your area function by passing in two arguments - the length and width.
 // 4. If only one argument is passed to the function, then the shape is a square. Modify your code to deal with this case.
 // 5. Use a template literal to print, “The area is ____ cm^2.”
+function funPhrase(str) {
+    let part;
+    if (str.length < 4 && str.length > 0) {
+      part = str[str.length - 1];
+    } else if (str.length > 3) {
+      part = str.slice(0,3);
+    }
+    return `We put the '${part}' in '${str}'.`;
+  }
+  
+  console.log(funPhrase('Functions rock!'));
+  console.log(funPhrase('asd'));
+  console.log(funPhrase('asdf'));
+  
+  function areaOfRectangle(length, width) {
+    if (width == undefined) {
+      width = length;
+    }
+    return length * width;
+  }
+  
+  console.log(`The area is ${areaOfRectangle(2,3)} cm^2`);
+  console.log(`The area is ${areaOfRectangle(2)} cm^2`);
