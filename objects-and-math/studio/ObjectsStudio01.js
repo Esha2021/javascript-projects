@@ -1,10 +1,35 @@
 // Code your selectRandomEntry function here:
 
-
+function randomEntry(arr){
+  let index=Math.floor(Math.random()*arr.length);
+  return arr[index]
+}
 // Code your buildCrewArray function here:
 
+function buildCrewArray(ids, candidates){
+  newCrew = []
+  for (i=0; i < ids.length; i++){
+    for (j=0; j<candidates.length; j++){
+        if (candidates[j].astronautID === ids[i]){
+          newCrew.push(candidates[j]);
+        }
+    }
+  }
+  return newCrew;
+}
 
+// Use selectRandomEntry to select three ticket numbers. Store these selections in a new array, making sure to avoid repeated numbers.
 let idNumbers = [291, 414, 503, 599, 796, 890];
+let chosenID = [];
+
+while (chosenID.length < 3){
+   let chosenForLaunch = randomEntry(idNumbers);
+    if (!chosenID.includes(chosenForLaunch)){
+        chosenID.push(chosenForLaunch);
+    }
+}
+
+
 
 // Here are the candidates and the 'animals' array:
 let candidateA = {
@@ -52,4 +77,7 @@ let candidateF = {
 
 let animals = [candidateA,candidateB,candidateC,candidateD,candidateE,candidateF];
 
+let crew = buildCrewArray(chosenID, animals);
+
 // Code your template literal and console.log statements:
+console.log(`${crew[0].name}, ${crew[1].name}, and ${crew[2].name} are going to space!`);
